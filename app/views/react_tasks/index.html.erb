@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React版タスク管理 - Study Rails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- カスタムスタイル -->
+    <style>
+      .animate-spin {
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50">
+    <div id="react-task-app"></div>
+    
+    <%= javascript_importmap_tags %>
+    <script type="module">
+      import "react_app"
+    </script>
+  </body>
+</html> 

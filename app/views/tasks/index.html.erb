@@ -1,0 +1,48 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">⚡ Hotwire版タスク管理</h1>
+      <p class="text-gray-600">Hotwireで快適なタスク管理を体験しよう</p>
+      <div class="mt-4">
+        <a href="/react_tasks" 
+           data-turbo="false" 
+           class="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+          ⚛️ React版を見る
+        </a>
+      </div>
+    </div>
+
+    <!-- New Task Form -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">新しいタスクを追加</h2>
+      <%= turbo_frame_tag "task_form" do %>
+        <%= render "form", task: @task %>
+      <% end %>
+    </div>
+
+    <!-- Tasks List -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="p-6 border-b border-gray-200">
+        <h2 class="text-xl font-semibold text-gray-800">
+          タスク一覧
+          <span class="text-sm text-gray-500 font-normal">
+            (<%= @tasks.pending.count %>件の未完了タスク)
+          </span>
+        </h2>
+      </div>
+
+      <div id="tasks" class="divide-y divide-gray-200">
+        <% if @tasks.any? %>
+          <%= render @tasks %>
+        <% else %>
+          <div class="p-8 text-center text-gray-500">
+            <div class="text-6xl mb-4">🎯</div>
+            <p class="text-lg font-medium">まだタスクがありません</p>
+            <p class="text-sm">上のフォームから新しいタスクを追加してください</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

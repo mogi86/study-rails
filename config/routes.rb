@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  root "tasks#index"
+  
+  # 既存のHotwire版
+  resources :tasks do
+    member do
+      patch :toggle_complete
+    end
+  end
+  
+  # 新規React版
+  get '/react_tasks', to: 'react_tasks#index'
+  
+  # API エンドポイント
+  namespace :api do
+    namespace :v1 do
+      resources :tasks do
+        member do
+          patch :toggle_complete
+        end
+      end
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

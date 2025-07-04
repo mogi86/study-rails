@@ -1,0 +1,20 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="mb-6">
+      <%= link_to tasks_path, class: "inline-flex items-center text-blue-600 hover:text-blue-800" do %>
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        タスク一覧に戻る
+      <% end %>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">タスクを編集</h1>
+
+      <%= turbo_frame_tag "task_#{@task.id}" do %>
+        <%= render "edit_form", task: @task %>
+      <% end %>
+    </div>
+  </div>
+</div>
